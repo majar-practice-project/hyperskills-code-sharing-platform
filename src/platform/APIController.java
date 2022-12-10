@@ -28,7 +28,7 @@ public class APIController {
 
     @GetMapping(value = "/code/{id}")
     public ResponseEntity<CodeDTO> getCode(@PathVariable UUID id){
-        return ResponseEntity.ok(dtoMapper.toDto(service.getCodeById(id)));
+        return ResponseEntity.ok(dtoMapper.toCodeDto(service.getCodeById(id)));
     }
 
     @PostMapping("/code/new")
@@ -41,6 +41,10 @@ public class APIController {
 
     @GetMapping("/code/latest")
     public ResponseEntity<List<CodeDTO>> getLatestCodes(){
-        return ResponseEntity.ok(service.getLatest().stream().map(dtoMapper::toDto).collect(Collectors.toList()));
+        return ResponseEntity.ok(service.getLatest().stream().map(dtoMapper::toCodeDto).collect(Collectors.toList()));
+    }
+
+    public CodeDTO findCodeById(UUID id){
+        return dtoMapper.toRenderCodeDto(service.getCodeById(id));
     }
 }

@@ -15,7 +15,7 @@ public class CodeSnippet {
     private String code;
     private LocalDateTime date;
     private LocalDateTime expiryDate;
-    private long availableViews;
+    private Long availableViews;
 
     public CodeSnippet() {
     }
@@ -23,8 +23,8 @@ public class CodeSnippet {
     public CodeSnippet(String code, LocalDateTime date, long availableSeconds, long availableViews) {
         this.code = code;
         this.date = date;
-        this.expiryDate = date.plusSeconds(availableSeconds);
-        this.availableViews = availableViews;
+        this.expiryDate = availableSeconds<=0 ? null : date.plusSeconds(availableSeconds);
+        this.availableViews = availableViews<=0 ? null : availableViews;
     }
 
     public UUID getId() {
@@ -47,7 +47,7 @@ public class CodeSnippet {
         return code;
     }
 
-    public long getAvailableViews() {
+    public Long getAvailableViews() {
         return availableViews;
     }
 

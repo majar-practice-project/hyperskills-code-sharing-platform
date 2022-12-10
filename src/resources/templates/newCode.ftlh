@@ -39,8 +39,8 @@
 <body>
 <textarea id="code_snippet" rows="6" cols="80" placeholder="Enter your code here..."></textarea>
 <br><br>
-    <Label for="time_restriction">Time restriction<input id="time_restriction" type="text"/></Label>
-    <Label for="views_restriction">View restriction<input id="views_restriction" type="text"/></Label>
+    <Label for="time_restriction">Time restriction<input id="time_restriction" type="number"/></Label>
+    <Label for="views_restriction">View restriction<input id="views_restriction" type="number"/></Label>
     <button id="send_snippet" type="submit" onclick="send()">Submit</button>
 </body>
 </html>

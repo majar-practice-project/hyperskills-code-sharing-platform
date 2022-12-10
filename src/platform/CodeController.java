@@ -20,7 +20,7 @@ public class CodeController {
 
     @GetMapping("/{id}")
     public String getCode(@PathVariable UUID id, Model model) {
-        model.addAttribute("snippet", api.getCode(id).getBody());
+        model.addAttribute("snippet", api.findCodeById(id));
         return "code";
     }
 

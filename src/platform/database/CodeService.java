@@ -23,7 +23,7 @@ public class CodeService {
     public CodeSnippet getCodeById(UUID id){
         codeRepository.validateExpiry();
         codeRepository.updateCodeView(id);
-        return codeRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        return codeRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public CodeSnippet save(CodeSnippet code){
@@ -32,8 +32,6 @@ public class CodeService {
 
     @Transactional
     public List<CodeSnippet> getLatest(){
-        codeRepository.validateExpiry();
-        codeRepository.updateLatestViews(10);
         return codeRepository.getLatest(10);
     }
 }
